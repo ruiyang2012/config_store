@@ -1,0 +1,20 @@
+[
+  {
+    "model": "config_store.configobjectdefinition",
+    "pk": 1,
+    "fields": {
+      "name": "Global",
+      "display_name": "Global Object Schema",
+      "uuid": "7a3e2c10-d524-11e2-8b8b-0800200c9a66"
+    }
+  },
+  {
+    "model": "config_store.configinstance",
+    "pk": 2,
+    "fields": {
+      "conf_object_def": "7a3e2c10-d524-11e2-8b8b-0800200c9a66",
+      "value": "Global Object Instance",
+      "uuid": "804a7b40-d524-11e2-8b8b-0800200c9a66"
+    }
+  }
+]

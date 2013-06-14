@@ -5,7 +5,7 @@ def make_uuid():
     return str(uuid.uuid4())
 
 class ConfigObjectDefinition(models.Model):
-    parent_obj_def = models.ForeignKey('self')
+    parent_obj_def = models.ForeignKey('self', null=True)
     uuid = models.CharField(max_length=36, primary_key=True,
       default=make_uuid, editable=False)
     name = models.CharField(max_length=20)
@@ -38,7 +38,7 @@ class ConfigObjectFieldScope(models.Model):
 
 
 class ConfigInstance(models.Model):
-    parent_instance = models.ForeignKey('self')
+    parent_instance = models.ForeignKey('self', null=True)
     conf_object_def = models.ForeignKey('ConfigObjectDefinition')
     uuid = models.CharField(max_length=36, primary_key=True,
       default=make_uuid, editable=False)
