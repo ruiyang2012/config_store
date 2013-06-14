@@ -20,7 +20,7 @@ class ConfigObjectField(models.Model):
        ("e", "enum"),
 
     )
-    conf_object_def = models.ForeignKey('ConfigObjectDefinition')
+    conf_object_def = models.ForeignKey('ConfigObjectDefinition', related_name='cols')
     uuid = models.CharField(max_length=36, primary_key=True,
       default=make_uuid, editable=False)
     property_name = models.CharField(max_length=20)
@@ -28,10 +28,15 @@ class ConfigObjectField(models.Model):
     property_type = models.CharField(max_length=10, choices = TYPE_CHOISE)
     default_value = models.TextField()
 
+    class Meta:
+        unique_together = ('conf_object_def', "property_name")
+
+    def __unicode__(self):
+        return '%s' % (self.property_name)
 
 # when object field type is enum, will look up from this table to get value scope.
 class ConfigObjectFieldScope(models.Model):
-    conf_obj_field = models.ForeignKey('ConfigObjectField')
+    conf_obj_field = models.ForeignKey('ConfigObjectField', related_name="scope")
     uuid = models.CharField(max_length=36, primary_key=True,
       default=make_uuid, editable=False)
     value = models.CharField(max_length=20)
@@ -46,7 +51,7 @@ class ConfigInstance(models.Model):
 
 
 class ConfigInstanceValue(models.Model):
-    conf_instance = models.ForeignKey('ConfigInstance')
+    conf_instance = models.ForeignKey('ConfigInstance', related_name="cols")
     conf_obj_field = models.ForeignKey('ConfigObjectField')
     uuid = models.CharField(max_length=36, primary_key=True,
       default=make_uuid, editable=False)
