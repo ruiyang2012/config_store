@@ -10,7 +10,10 @@ urlpatterns = patterns('',
 
     # url(r'^$', 'config_store.views.home', name='home'),
     url(r'^config_object_def/$', views.ConfigObjectDefinitionList.as_view()),
-    url(r'^config_object_def/(?P<pk>[0-9]+)', views.ConfigObjectDefinitionDetail.as_view()),
+    url(r'^config_object_def/(?P<pk>[^/]+)/$', views.ConfigObjectDefinitionDetail.as_view()),
+
+    url(r'^config_instance/$', views.ConfigInstanceList.as_view()),
+    url(r'^config_instance/(?P<pk>[^/]+)/$', views.ConfigInstanceDetail.as_view()),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

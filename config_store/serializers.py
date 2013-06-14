@@ -19,3 +19,16 @@ class ConfObjDefSerializer(serializers.ModelSerializer):
     class Meta:
         model = ConfigObjectDefinition
         fields = ('uuid', 'parent_obj_def', 'name', 'display_name', "cols")
+
+class ConfInstanceSerializer(serializers.ModelSerializer):
+    read_only_fields = ("uuid")
+    class Meta:
+        model = ConfigInstance
+        fields = ('uuid', 'parent_instance', 'conf_object_def', 'value')
+
+class ConfInstanceDetailsSerializer(serializers.ModelSerializer):
+    cols = serializers.RelatedField(many=True)
+    read_only_fields = ("uuid")
+    class Meta:
+        model = ConfigInstance
+        fields = ('uuid', 'parent_instance', 'conf_object_def', 'value', 'cols')
