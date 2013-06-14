@@ -1,0 +1,16 @@
+# Basics
+Django==1.5.1
+
+# System
+South==0.8.1
+
+# restframework
+djangorestframework==2.3.5
+
+# oauth
+django-oauth-toolkit==0.2.1
+django-cors-headers==0.11
+
+# tox
+tox==1.4.3
+
