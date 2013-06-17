@@ -34,3 +34,4 @@ class ConfigInstanceDetail(generics.RetrieveAPIView):
     lookup_fields = ("uuid")
     queryset = ConfigInstance.objects.all()
     serializer_class = serializers.ConfInstanceDetailsSerializer
+
